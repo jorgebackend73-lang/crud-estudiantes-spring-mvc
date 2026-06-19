@@ -33,7 +33,7 @@ import lombok.ToString;
 @NoArgsConstructor
 @Getter
 @Setter
-@ToString
+@ToString(exclude = {"telefonos", "emails"})
 @Builder
 public class Estudiante implements Serializable {
 

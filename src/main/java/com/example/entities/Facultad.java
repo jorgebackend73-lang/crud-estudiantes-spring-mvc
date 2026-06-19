@@ -24,7 +24,7 @@ import lombok.ToString;
 @NoArgsConstructor
 @Getter
 @Setter
-@ToString
+@ToString(exclude = "empleados")
 @Builder
 public class Facultad implements Serializable {
 
