@@ -6,7 +6,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 import com.example.entities.Estudiante;
 
-public interface Telefono extends JpaRepository<Telefono, Integer> {
+public interface TelefonoDao extends JpaRepository<TelefonoDao, Integer> {
 
     // Método para ver si el empleado tiene telefonos
 	boolean existsByEstudiante(Estudiante estudiante);
@@ -15,7 +15,7 @@ public interface Telefono extends JpaRepository<Telefono, Integer> {
 	void deleteByEstudiante(Estudiante estudiante);
 	
 	// Metodo para encontrar todos los telefonos del empleado
-	List<Telefono> findByEstudiante(Estudiante estudiante);
+	List<TelefonoDao> findByEstudiante(Estudiante estudiante);
 	// casi lo genera solo eclipse solo recordar exists, delete, find By empleado
 
 }
