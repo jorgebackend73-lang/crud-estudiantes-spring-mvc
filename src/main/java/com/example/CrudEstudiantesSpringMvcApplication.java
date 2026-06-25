@@ -25,8 +25,8 @@ public class CrudEstudiantesSpringMvcApplication implements CommandLineRunner {
 
 	private final EstudianteService estudianteService;
 	private final FacultadService facultadService;
-	private final CorreoService correoService;
-	private final TelefonoService telefonoService;
+	// private final CorreoService correoService;
+	// private final TelefonoService telefonoService;
 
 	public static void main(String[] args) {
 		SpringApplication.run(CrudEstudiantesSpringMvcApplication.class, args);

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1 th:text="'Detalles del estudiante: ' 
+                + ${estudiante.nombre} + ' ' 
+                + ${estudiante.primerApellido} + ' '
+                + ${estudiante.segundoApellido}"></h1>
+
+    <!-- Mostrar el nombre de la Facultad donde estudia el estudiante             -->
+    <h2 th:text="'Facultad: ' + ${estudiante.facultad.nombre}"></h2>     
+    
+    <!-- Telefonos del estudiante -->
+    <div th:if="${estudiante.telefonos.size() > 0}">
+        <h2>Telefonos: </h2>
+        <ul>
+            <li th:each="telefono : ${estudiante.telefonos}" 
+                th:text="${telefono.numero}"></li>
+        </ul>
+    </div>
+
+    <!-- Correos del estudiante -->
+    <div th:if="${estudiante.emails.size() > 0}">
+        <h2>Correos: </h2>
+        <ul>
+            <li th:each="email : ${estudiante.emails}"
+                th:text="${email.email}"></li>
+        </ul>
+
+    </div> 
+
+    <!-- Foto del estudiante -->
+    <div th:if="${estudiante.foto != null}">
+        <h2>Foto: </h2>
+        <img th:src="@{/imagenes/}+${estudiante.foto}" alt="Foto del Estudiante">
+    </div> 
+</body>
+</html>

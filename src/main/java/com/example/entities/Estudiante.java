@@ -22,6 +22,8 @@ import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.PastOrPresent;
+import jakarta.validation.constraints.Pattern;
 import jakarta.validation.constraints.Size;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -52,14 +54,21 @@ public class Estudiante implements Serializable {
     // Anotaciones de validación:
     @NotNull(message = "El Nombre no puede estar vacio")
     @NotBlank(message = "El Nombre no puede estar en blanco")
-    @Size(min = 4, max = 30)
+    @Size(min = 3, max = 30, message = "El nombre tiene que estar entre 3 y 30 caracteres")
+    @Pattern(regexp = "^([A-ZÁÉÍÓÚÑ][a-záéíóúñ]+(\s)?)+$", 
+            message = "La primera letra en mayusculas y solo letras de la A a la Z")
     private String nombre;
 
     @NotNull(message = "El Primer Apellido no puede estar vacio")
     @NotBlank(message = "El Primer Apellido no puede estar en blanco")
-    @Size(min = 4, max = 30)
+    @Size(min = 3, max = 30, message = "El Primer Apellido tiene que estar entre 3 y 30 caracteres")
+    @Pattern(regexp = "^([A-ZÁÉÍÓÚÑ][a-záéíóúñ]+(\s)?)+$", 
+            message = "La primera letra en mayusculas y solo letras de la A a la Z")
     private String primerApellido;
     
+    @Size(max = 30, message = "El Segundo Apellido solo puede tener una longitud de 30 caracteres")
+    @Pattern(regexp = "^([A-ZÁÉÍÓÚÑ][a-záéíóúñ]+(\s)?)+$", 
+            message = "La primera letra en mayusculas y solo letras de la A a la Z")
     private String segundoApellido;
         
     // para que no guarde ordinal y guarde el nombre hay que anotar:
@@ -67,7 +76,8 @@ public class Estudiante implements Serializable {
     private Genero genero;
 
     // formato canónico de fecha (mm serían minutos en vez de meses)
-    @DateTimeFormat(pattern="yyyy-MM-dd") 
+    @DateTimeFormat(pattern="yyyy-MM-dd")
+    @PastOrPresent(message = "La fecha de alta tiene que ser igual o anterior a la fecha actual") 
     private LocalDate fechaAlta;
 
 
@@ -87,7 +97,7 @@ public class Estudiante implements Serializable {
     @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL, mappedBy = "estudiante")
     @Builder.Default
     private Set<Correo> emails = new HashSet<>();
-
-
+    
+    private String foto;
 
 }
