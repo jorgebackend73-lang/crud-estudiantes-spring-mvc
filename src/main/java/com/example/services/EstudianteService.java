@@ -8,11 +8,11 @@ public interface EstudianteService {
 
     List<Estudiante> getAllEstudiantes();
 
-    // Metodo para obtener un empleado por su id
+    // Metodo para obtener un estudiante por su id
     Estudiante getEstudianteById(int id);
 
-    // Metodo para persistir (guardar) un empleado
-    Estudiante savEstudiante(Estudiante estudiante);
+    // Metodo para persistir (guardar) un estudiante
+    Estudiante saveEstudiante(Estudiante estudiante);
 
     // Metodo para eliminar un estudiante por su id
 	void deleteEstudiante(int id);

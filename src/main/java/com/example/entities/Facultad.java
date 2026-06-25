@@ -19,12 +19,12 @@ import lombok.Setter;
 import lombok.ToString;
 
 @Entity
-@Table(name = "facultad")
+@Table(name = "facultades")
 @AllArgsConstructor
 @NoArgsConstructor
 @Getter
 @Setter
-@ToString(exclude = "empleados")
+@ToString(exclude = "estudiantes")
 @Builder
 public class Facultad implements Serializable {
 
@@ -53,8 +53,8 @@ public class Facultad implements Serializable {
     la relación de clave externa, que al igual que en SQL es en el lado de muchos.
     */
 
-    @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.REMOVE, mappedBy = "departamento")
-    private List<Estudiante> empleados;
+    @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.REMOVE, mappedBy = "facultad")
+    private List<Estudiante> estudiantes;
 
 
 
