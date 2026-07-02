@@ -4,6 +4,8 @@ import java.io.Serializable;
 import java.math.BigDecimal;
 import java.time.LocalDate;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 import com.example.models.Genero;
 
 import jakarta.persistence.Entity;
@@ -15,6 +17,7 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
+import jakarta.validation.constraints.PastOrPresent;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
@@ -50,17 +53,18 @@ public class Profesor implements Serializable {
     @Enumerated(EnumType.STRING)
     private Genero genero;
 
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
+    @PastOrPresent(message = "La fecha de alta tiene que ser igual o anterior a la fecha actual")
     private LocalDate fechaAlta;
 
     private BigDecimal salario;
-
-    private String foto;
 
     // relación de muchos a uno. Aunq es bidireccional seguimos teneiendo que distinguir
     // entre mmuchos a uno y uno a muchos:
     @ManyToOne(fetch = FetchType.LAZY)
     private Facultad facultad;
     
+    private String foto;
 
 
 }

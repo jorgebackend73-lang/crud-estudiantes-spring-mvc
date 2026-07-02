@@ -189,7 +189,7 @@ public class EstudianteController {
 			
 		}
 	
-		// Declaramos Set de java util donde alojar nuestra lista de telefonos:
+		// Declaramos Set de java util donde alojar nuestra lista de correos:
 		// Lo comentamos aquí tambien pq ya tenemos el set creado en la entidad Estudiante.
 				// Set<Correo> correos = new HashSet<Correo>();
 				
@@ -325,7 +325,7 @@ public class EstudianteController {
 				// Eliminar al dichoso estudiante
 				estudianteService.deleteEstudiante(estudianteEliminar);
 
-				return "redirect:/estudiante/listar";
+				return "redirect:/estudiantes/listar";
 
 			}
 
