@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+<h1>Lista de Profesores</h1>
+
+<div>
+	<a th:href="@{/profesores/alta}">Alta Profesor</a>
+</div>
+
+<table>
+	<thead>
+		<tr>
+			<th>Nombre</th>
+			<th>Primer Apellido</th>
+			<th>Segundo Apellido</th>
+			<th>Genero</th>
+			<th>Fecha de Alta</th>
+            <th>Salario</th>		
+		</tr>
+	</thead>
+	<tbody>
+		<tr th:each="profesor : ${profesores}">
+			<td th:text="${profesor.nombre}"></td>
+			<td th:text="${profesor.primerApellido}"></td>
+			<td th:text="${profesor.segundoApellido}"></td>
+			<td th:text="${profesor.genero}"></td>
+			<td th:text="${profesor.fechaAlta}"></td>
+            <td th:text="${profesor.salario}"></td>
+			<td><a th:href="@{/profesores/details/}+${profesor.id}">Detalles</a></td>
+			<td><a th:href="@{/profesores/update/}+${profesor.id}">Actualizar</a></td>
+			<td><a th:href="@{/profesores/delete/}+${profesor.id}">Eliminar</a></td>
+		</tr>
+	
+	</tbody>
+
+</table>
+
+</body>
+</html>
